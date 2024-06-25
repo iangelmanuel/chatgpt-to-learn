@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
+import { orthographyUseCase } from '../../../core/use-cases'
 import {
-  GptMessage,
+  GptOrthopraphyMessage,
   MyMessage,
   TextMessageBox, // TextMessageBoxFile,
   // TextMessageBoxSelect,
@@ -11,6 +12,11 @@ import {
 type Message = {
   text: string
   isGpt: boolean
+  info?: {
+    userScore: number
+    errors: string[]
+    message: string
+  }
 }
 
 export const OrthographyPage = () => {
@@ -22,6 +28,27 @@ export const OrthographyPage = () => {
     setMessages((prevState) => [...prevState, { text: message, isGpt: false }])
 
     // useCase
+    const res = await orthographyUseCase(message)
+
+    if (!res.ok) {
+      setMessages((prevState) => [
+        ...prevState,
+        { text: 'No se pudo realizar la correción', isGpt: true }
+      ])
+    } else {
+      setMessages((prevState) => [
+        ...prevState,
+        {
+          text: res.message,
+          isGpt: true,
+          info: {
+            userScore: res.userScore,
+            errors: res.errors,
+            message: res.message
+          }
+        }
+      ])
+    }
 
     setIsLoading(false)
 
@@ -34,9 +61,11 @@ export const OrthographyPage = () => {
         <div className="grid grid-cols-12 gap-y-2">
           {messages.map((message, index) =>
             message.isGpt ? (
-              <GptMessage
+              <GptOrthopraphyMessage
                 key={index}
-                text={message.text}
+                errors={message.info!.errors}
+                message={message.info!.message}
+                userScore={message.info!.userScore}
               />
             ) : (
               <MyMessage
