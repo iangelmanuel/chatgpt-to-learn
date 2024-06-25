@@ -14,9 +14,9 @@ export const orthographyCheckUseCase = async (
     messages: [
       {
         role: 'system',
-        content: `Te serán proveídos textos en español con posibles errores ortográficos y gramaticales, las palabras usadas deben existir en el diccionario de la Real Academia Español.
+        content: `Te serán proveídos textos en español con posibles errores ortográficos y gramaticales, las palabras usadas deben existir en el diccionario de la Real Academia Española.
 
-        Debes de responser en formato JSON. Tu tarea es corregirlos y retornar información soluciones, tambien debes de dar un porcentaje de acierto por el usuario.
+        Debes de responser en formato JSON. Tu tarea es corregirlos y retornar información con soluciones, tambien debes de dar un porcentaje de acierto por el usuario.
 
         Si no hay errores, debes de retornar un mensaje de felicitaciones y mencionar que no hay errores ortográficos.
 
