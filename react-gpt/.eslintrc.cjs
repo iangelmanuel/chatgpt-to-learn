@@ -5,7 +5,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    'standard',
+    'standard'
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -13,7 +13,7 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': [
       'warn',
-      { allowConstantExport: true },
+      { allowConstantExport: true }
     ],
     'global-require': 'off',
     'space-before-function-paren': 'off',
@@ -21,5 +21,6 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/no-unused-vars': 'warn',
     'multiline-ternary': 'off',
-  },
+    'generator-star-spacing': 'off'
+  }
 }
