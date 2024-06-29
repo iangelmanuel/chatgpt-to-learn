@@ -1,9 +1,9 @@
-import { IsInt, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class TranslateDto {
   @IsString()
   readonly prompt: string;
 
-  @IsInt()
+  @IsString()
   readonly lang: string;
 }
