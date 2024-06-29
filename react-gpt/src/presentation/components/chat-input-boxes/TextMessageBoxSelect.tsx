@@ -24,6 +24,7 @@ export const TextMessageBoxSelect = ({
   const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (message.trim().length === 0) return
+    if (selectedOption === '') return
     onSendMessage(message, selectedOption)
     setMessage('')
   }
@@ -62,7 +63,7 @@ export const TextMessageBoxSelect = ({
             {options.map((option) => (
               <option
                 key={option.id}
-                value={option.id}
+                value={option.text}
               >
                 {option.text}
               </option>
