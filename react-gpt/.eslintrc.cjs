@@ -19,8 +19,10 @@ module.exports = {
     'space-before-function-paren': 'off',
     'no-undef': 'off',
     '@typescript-eslint/consistent-type-imports': 'error',
+    'no-unused-vars': 'warn',
     '@typescript-eslint/no-unused-vars': 'warn',
     'multiline-ternary': 'off',
-    'generator-star-spacing': 'off'
+    'generator-star-spacing': 'off',
+    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off'
   }
 }
