@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 
 type Props = {
-  onSendMessage: (message: string) => void
+  onSendMessage: (message: string, audioFile: File) => void
   placeholder?: string
   disableCorrections?: boolean
   accept?: string
@@ -19,9 +19,10 @@ export const TextMessageBoxFile = ({
 
   const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (message.trim().length === 0) return
-    onSendMessage(message)
+    if (selectedFile === null || selectedFile === undefined) return
+    onSendMessage(message, selectedFile)
     setMessage('')
+    setSelectedFile(null)
   }
 
   return (
