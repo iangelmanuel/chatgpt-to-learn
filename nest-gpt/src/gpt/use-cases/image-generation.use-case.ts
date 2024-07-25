@@ -4,7 +4,7 @@ import * as fs from 'fs';
 
 interface Options {
   prompt: string;
-  origialImage?: string;
+  originalImage?: string;
   maskImage?: string;
 }
 
@@ -12,9 +12,9 @@ export const imageGenerationUseCase = async (
   openai: OpenAI,
   options: Options,
 ) => {
-  const { prompt, origialImage, maskImage } = options;
+  const { prompt, originalImage, maskImage } = options;
 
-  if (!origialImage && !maskImage) {
+  if (!originalImage && !maskImage) {
     const response = await openai.images.generate({
       prompt,
       model: 'dall-e-3',
@@ -34,7 +34,7 @@ export const imageGenerationUseCase = async (
     };
   }
 
-  const pngImagePath = await downloadImageAsPng(origialImage, true);
+  const pngImagePath = await downloadImageAsPng(originalImage, true);
   const maskPath = await downloadBase64ImageAsPng(maskImage, true);
 
   const response = await openai.images.edit({
