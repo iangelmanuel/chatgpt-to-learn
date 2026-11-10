@@ -1,12 +1,11 @@
-import { useRef, useState } from 'react'
-
-import { prosConsGeneratorUseCase } from '../../../core/use-cases'
+import { useRef, useState } from "react"
+import { prosConsGeneratorUseCase } from "../../../core/use-cases"
 import {
   GptMessage,
   MyMessage,
   TextMessageBox,
   TypingLoader
-} from '../../components'
+} from "../../components"
 
 type Message = {
   text: string
@@ -37,7 +36,7 @@ export const ProsConsStreamPage = () => {
     )
     setIsLoading(false)
 
-    setMessages((prevState) => [...prevState, { text: '', isGpt: true }])
+    setMessages((prevState) => [...prevState, { text: "", isGpt: true }])
 
     for await (const value of stream) {
       setMessages((prevState) => {
@@ -98,7 +97,7 @@ export const ProsConsStreamPage = () => {
             )
           )}
           {isLoading && (
-            <div className="col-start-1 col-end-12 fade-in">
+            <div className="fade-in col-start-1 col-end-12">
               <TypingLoader className="fade-in" />
             </div>
           )}

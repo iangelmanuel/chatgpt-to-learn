@@ -1,12 +1,11 @@
-import { useState } from 'react'
-
-import { prosConsDiscusserUseCase } from '../../../core/use-cases'
+import { useState } from "react"
+import { prosConsDiscusserUseCase } from "../../../core/use-cases"
 import {
   GptMessage,
   MyMessage,
   TextMessageBox,
   TypingLoader
-} from '../../components'
+} from "../../components"
 
 type Message = {
   text: string
@@ -59,7 +58,7 @@ export const ProsConsPage = () => {
             )
           )}
           {isLoading && (
-            <div className="col-start-1 col-end-12 fade-in">
+            <div className="fade-in col-start-1 col-end-12">
               <TypingLoader className="fade-in" />
             </div>
           )}

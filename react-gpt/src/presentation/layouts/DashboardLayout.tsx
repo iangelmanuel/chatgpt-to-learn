@@ -1,18 +1,17 @@
-import { Outlet } from 'react-router-dom'
-
-import { SidebarMenuItem } from '../components'
-import { menuRoutes } from '../router/router'
+import { Outlet } from "react-router-dom"
+import { SidebarMenuItem } from "../components"
+import { menuRoutes } from "../router/router"
 
 export default function DashboardLayout() {
   return (
-    <main className="flex flex-row mt-7">
-      <nav className="hidden sm:flex flex-col ml-5 w-[370px] min-h-[calc(100vh-3.0rem)] bg-white bg-opacity-10 p-5 rounded-3xl">
-        <h1 className="font-bold text-lg lg:text-3xl bg-gradient-to-br from-white via-white/50 bg-clip-text text-transparent">
+    <main className="mt-7 flex flex-row">
+      <nav className="ml-5 hidden min-h-[calc(100vh-3.0rem)] w-[370px] flex-col rounded-3xl bg-white bg-opacity-10 p-5 sm:flex">
+        <h1 className="bg-gradient-to-br from-white via-white/50 bg-clip-text text-lg font-bold text-transparent lg:text-3xl">
           ReactGPT<span className="text-indigo-500">.</span>
         </h1>
         <span className="text-xl">Bienvenido</span>
 
-        <div className="border-gray-700 border my-3" />
+        <div className="my-3 border border-gray-700" />
 
         {/* Opciones del menú */}
         {menuRoutes.map((option) => (
@@ -23,9 +22,9 @@ export default function DashboardLayout() {
         ))}
       </nav>
 
-      <section className="mx-3 sm:mx-20 flex flex-col w-full h-[calc(100vh-50px)]  bg-white bg-opacity-10 p-5 rounded-3xl">
-        <div className="flex flex-row h-full">
-          <div className="flex flex-col flex-auto h-full p-1">
+      <section className="mx-3 flex h-[calc(100vh-50px)] w-full flex-col rounded-3xl bg-white bg-opacity-10 p-5 sm:mx-20">
+        <div className="flex h-full flex-row">
+          <div className="flex h-full flex-auto flex-col p-1">
             <Outlet />
           </div>
         </div>

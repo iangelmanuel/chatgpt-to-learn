@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react"
 
 type Props = {
   onSendMessage: (message: string) => void
@@ -11,19 +11,19 @@ export const TextMessageBox = ({
   placeholder,
   disableCorrections
 }: Props) => {
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState("")
 
   const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (message.trim().length === 0) return
     onSendMessage(message)
-    setMessage('')
+    setMessage("")
   }
 
   return (
     <form
       onSubmit={handleSendMessage}
-      className="flex flex-row items-center h-16 rounded-xl bg-gray-800 w-full px-4"
+      className="flex h-16 w-full flex-row items-center rounded-xl bg-gray-800 px-4"
     >
       <div className="flex-grow">
         <div className="relative w-full">
@@ -32,12 +32,12 @@ export const TextMessageBox = ({
             name="message"
             autoFocus
             placeholder={placeholder}
-            autoComplete={disableCorrections ? 'on' : 'of'}
-            autoCorrect={disableCorrections ? 'on' : 'of'}
-            spellCheck={disableCorrections ? 'false' : 'true'}
+            autoComplete={disableCorrections ? "on" : "of"}
+            autoCorrect={disableCorrections ? "on" : "of"}
+            spellCheck={disableCorrections ? "false" : "true"}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="flex w-full border rounded-xl text-gray-800 focus:outline-none focus:border-indigo-300 pl-4 h-10"
+            className="flex h-10 w-full rounded-xl border pl-4 text-gray-800 focus:border-indigo-300 focus:outline-none"
           />
         </div>
       </div>

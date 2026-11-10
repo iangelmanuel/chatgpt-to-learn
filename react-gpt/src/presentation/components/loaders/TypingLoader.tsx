@@ -1,4 +1,4 @@
-import './TypingLoader.css'
+import "./TypingLoader.css"
 
 type Props = {
   className?: string

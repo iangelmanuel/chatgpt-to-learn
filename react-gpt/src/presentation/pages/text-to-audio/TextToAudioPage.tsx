@@ -1,38 +1,37 @@
-import { useState } from 'react'
-
-import { textToAudioUseCase } from '../../../core/use-cases'
+import { useState } from "react"
+import { textToAudioUseCase } from "../../../core/use-cases"
 import {
   GptMessage,
   GptMessageAudio,
   MyMessage,
   TextMessageBoxSelect,
   TypingLoader
-} from '../../components'
+} from "../../components"
 
 type TextMessage = {
   text: string
   isGpt: boolean
-  type: 'text'
+  type: "text"
 }
 
 type AudioMessage = {
   text: string
   isGpt: boolean
   audio: string
-  type: 'audio'
+  type: "audio"
 }
 
 type Message = TextMessage | AudioMessage
 
-const displaimer = '## Todo el Audio generado es propiedad de OpenAI'
+const displaimer = "## Todo el Audio generado es propiedad de OpenAI"
 
 const voices = [
-  { id: 'nova', text: 'Nova' },
-  { id: 'alloy', text: 'Alloy' },
-  { id: 'echo', text: 'Echo' },
-  { id: 'fable', text: 'Fable' },
-  { id: 'onyx', text: 'Onyx' },
-  { id: 'shimmer', text: 'Shimmer' }
+  { id: "nova", text: "Nova" },
+  { id: "alloy", text: "Alloy" },
+  { id: "echo", text: "Echo" },
+  { id: "fable", text: "Fable" },
+  { id: "onyx", text: "Onyx" },
+  { id: "shimmer", text: "Shimmer" }
 ]
 
 export const TextToAudioPage = () => {
@@ -43,7 +42,7 @@ export const TextToAudioPage = () => {
     setIsLoading(true)
     setMessages((prevState) => [
       ...prevState,
-      { text: prompt, isGpt: false, type: 'text' }
+      { text: prompt, isGpt: false, type: "text" }
     ])
 
     // useCase
@@ -60,7 +59,7 @@ export const TextToAudioPage = () => {
       {
         text: `${selectedVoice} ${message}`,
         isGpt: true,
-        type: 'audio',
+        type: "audio",
         audio: audioUrl!
       }
     ])
@@ -75,7 +74,7 @@ export const TextToAudioPage = () => {
           <GptMessage text={displaimer} />
           {messages.map((message, index) =>
             message.isGpt ? (
-              message.type === 'audio' ? (
+              message.type === "audio" ? (
                 <GptMessageAudio
                   key={index}
                   text={message.text}
@@ -95,7 +94,7 @@ export const TextToAudioPage = () => {
             )
           )}
           {isLoading && (
-            <div className="col-start-1 col-end-12 fade-in">
+            <div className="fade-in col-start-1 col-end-12">
               <TypingLoader className="fade-in" />
             </div>
           )}

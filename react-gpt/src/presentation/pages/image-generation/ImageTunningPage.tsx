@@ -1,16 +1,15 @@
-import { useState } from 'react'
-
+import { useState } from "react"
 import {
   imageGenerationUseCase,
   imageVariationUseCase
-} from '../../../core/use-cases'
+} from "../../../core/use-cases"
 import {
   GptMessage,
   GptMessageSelectableImage,
   MyMessage,
   TextMessageBox,
   TypingLoader
-} from '../../components'
+} from "../../components"
 
 interface Message {
   text: string
@@ -26,10 +25,10 @@ export const ImageTunningPage = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       isGpt: true,
-      text: 'Imagen base',
+      text: "Imagen base",
       info: {
-        alt: 'Imagen base',
-        imageUrl: 'http://localhost:3000/gpt/image-generation/1721906189016.png'
+        alt: "Imagen base",
+        imageUrl: "http://localhost:3000/gpt/image-generation/1721906189016.png"
       }
     }
   ])
@@ -49,7 +48,7 @@ export const ImageTunningPage = () => {
     setMessages((prev) => [
       ...prev,
       {
-        text: 'Variación',
+        text: "Variación",
         isGpt: true,
         info: {
           imageUrl: resp.url,
@@ -71,7 +70,7 @@ export const ImageTunningPage = () => {
     if (!imageInfo) {
       return setMessages((prev) => [
         ...prev,
-        { text: 'No se pudo generar la imagen', isGpt: true }
+        { text: "No se pudo generar la imagen", isGpt: true }
       ])
     }
 
@@ -91,10 +90,10 @@ export const ImageTunningPage = () => {
   return (
     <>
       {originalImageAndMask.original && (
-        <div className="fixed flex flex-col items-center top-10 right-10 z-10 fade-in">
+        <div className="fade-in fixed right-10 top-10 z-10 flex flex-col items-center">
           <span>Editando</span>
           <img
-            className="border rounded-xl w-36 h-36 object-contain"
+            className="h-36 w-36 rounded-xl border object-contain"
             src={originalImageAndMask.mask ?? originalImageAndMask.original}
             alt="Imagen original"
           />
@@ -118,11 +117,11 @@ export const ImageTunningPage = () => {
                 <GptMessageSelectableImage
                   key={index}
                   text={message.text}
-                  imageUrl={message.info?.imageUrl!}
-                  alt={message.info?.alt!}
+                  imageUrl={message.info?.imageUrl as string}
+                  alt={message.info?.alt as string}
                   onImageSelected={(maskImageUrl) =>
                     setOriginalImageAndMask({
-                      original: message.info?.imageUrl!,
+                      original: message.info?.imageUrl as string,
                       mask: maskImageUrl
                     })
                   }
@@ -136,7 +135,7 @@ export const ImageTunningPage = () => {
             )}
 
             {isLoading && (
-              <div className="col-start-1 col-end-12 fade-in">
+              <div className="fade-in col-start-1 col-end-12">
                 <TypingLoader />
               </div>
             )}

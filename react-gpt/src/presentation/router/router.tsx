@@ -1,6 +1,5 @@
-import { Navigate, createBrowserRouter } from 'react-router-dom'
-
-import DashboardLayout from '../layouts/DashboardLayout'
+import { Navigate, createBrowserRouter } from "react-router-dom"
+import DashboardLayout from "../layouts/DashboardLayout"
 import {
   AssistantPage,
   AudioToTextPage,
@@ -11,77 +10,77 @@ import {
   ProsConsStreamPage,
   TextToAudioPage,
   TranslatePage
-} from '../pages'
+} from "../pages"
 
 export const menuRoutes = [
   {
-    to: '/orthography',
-    icon: 'fa-solid fa-spell-check',
-    title: 'Ortografía',
-    description: 'Corregir ortografía',
+    to: "/orthography",
+    icon: "fa-solid fa-spell-check",
+    title: "Ortografía",
+    description: "Corregir ortografía",
     component: <OrthographyPage />
   },
   {
-    to: '/pros-cons',
-    icon: 'fa-solid fa-code-compare',
-    title: 'Pros & Cons',
-    description: 'Comparar pros y contras',
+    to: "/pros-cons",
+    icon: "fa-solid fa-code-compare",
+    title: "Pros & Cons",
+    description: "Comparar pros y contras",
     component: <ProsConsPage />
   },
   {
-    to: '/pros-cons-stream',
-    icon: 'fa-solid fa-water',
-    title: 'Como stream',
-    description: 'Con stream de mensajes',
+    to: "/pros-cons-stream",
+    icon: "fa-solid fa-water",
+    title: "Como stream",
+    description: "Con stream de mensajes",
     component: <ProsConsStreamPage />
   },
   {
-    to: '/translate',
-    icon: 'fa-solid fa-language',
-    title: 'Traducir',
-    description: 'Textos a otros idiomas',
+    to: "/translate",
+    icon: "fa-solid fa-language",
+    title: "Traducir",
+    description: "Textos a otros idiomas",
     component: <TranslatePage />
   },
   {
-    to: '/text-to-audio',
-    icon: 'fa-solid fa-podcast',
-    title: 'Texto a audio',
-    description: 'Convertir texto a audio',
+    to: "/text-to-audio",
+    icon: "fa-solid fa-podcast",
+    title: "Texto a audio",
+    description: "Convertir texto a audio",
     component: <TextToAudioPage />
   },
   {
-    to: '/image-generation',
-    icon: 'fa-solid fa-image',
-    title: 'Imágenes',
-    description: 'Generar imágenes',
+    to: "/image-generation",
+    icon: "fa-solid fa-image",
+    title: "Imágenes",
+    description: "Generar imágenes",
     component: <ImageGenerationPage />
   },
   {
-    to: '/image-tunning',
-    icon: 'fa-solid fa-wand-magic',
-    title: 'Editar imagen',
-    description: 'Generación continua',
+    to: "/image-tunning",
+    icon: "fa-solid fa-wand-magic",
+    title: "Editar imagen",
+    description: "Generación continua",
     component: <ImageTunningPage />
   },
   {
-    to: '/audio-to-text',
-    icon: 'fa-solid fa-comment-dots',
-    title: 'Audio a texto',
-    description: 'Convertir audio a texto',
+    to: "/audio-to-text",
+    icon: "fa-solid fa-comment-dots",
+    title: "Audio a texto",
+    description: "Convertir audio a texto",
     component: <AudioToTextPage />
   },
   {
-    to: '/assistant',
-    icon: 'fa-solid fa-user',
-    title: 'Asistente',
-    description: 'Información del asistente',
+    to: "/assistant",
+    icon: "fa-solid fa-user",
+    title: "Asistente",
+    description: "Información del asistente",
     component: <AssistantPage />
   }
 ]
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <DashboardLayout />,
     children: [
       ...menuRoutes.map(({ to, component }) => ({
@@ -89,7 +88,7 @@ export const router = createBrowserRouter([
         element: component
       })),
       {
-        path: '/',
+        path: "/",
         element: (
           <Navigate
             to={menuRoutes[0].to}

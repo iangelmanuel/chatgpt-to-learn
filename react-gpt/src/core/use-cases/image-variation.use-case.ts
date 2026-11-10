@@ -11,9 +11,9 @@ export const imageVariationUseCase = async (
     const resp = await fetch(
       `${import.meta.env.VITE_GPT_API}/image-variation`,
       {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           baseImage: originalImage

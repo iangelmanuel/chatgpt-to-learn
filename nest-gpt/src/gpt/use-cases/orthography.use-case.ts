@@ -1,19 +1,19 @@
-import OpenAI from 'openai';
+import OpenAI from "openai"
 
 type Options = {
-  prompt: string;
-};
+  prompt: string
+}
 
 export const orthographyCheckUseCase = async (
   openai: OpenAI,
-  options: Options,
+  options: Options
 ) => {
-  const { prompt } = options;
+  const { prompt } = options
 
   const completion = await openai.chat.completions.create({
     messages: [
       {
-        role: 'system',
+        role: "system",
         content: `Te serán proveídos textos en español con posibles errores ortográficos y gramaticales, las palabras usadas deben existir en el diccionario de la Real Academia Española.
 
         Debes de responser en formato JSON. Tu tarea es corregirlos y retornar información con soluciones, tambien debes de dar un porcentaje de acierto por el usuario.
@@ -26,18 +26,18 @@ export const orthographyCheckUseCase = async (
           errors: string[], // ['error -> solución']
           message: string, // Usa emojis y texto para felicitar al usuario
         }
-        `,
+        `
       },
       {
-        role: 'user',
-        content: prompt,
-      },
+        role: "user",
+        content: prompt
+      }
     ],
-    model: 'gpt-4o',
+    model: "gpt-4o",
     temperature: 0.3,
-    max_tokens: 150,
-  });
+    max_tokens: 150
+  })
 
-  const jsonResponse = JSON.parse(completion.choices[0].message.content);
-  return jsonResponse;
-};
+  const jsonResponse = JSON.parse(completion.choices[0].message.content)
+  return jsonResponse
+}

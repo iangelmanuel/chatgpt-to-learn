@@ -1,19 +1,19 @@
-import type { OrthographyResponse } from '../../types'
+import type { OrthographyResponse } from "../../types"
 
 export const orthographyUseCase = async (prompt: string) => {
   try {
     const url = `${import.meta.env.VITE_GPT_API}/orthography-check`
 
     const res = await fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({ prompt })
     })
 
     if (!res.ok) {
-      throw new Error('No se pudo realizar la corrección de ortografía.')
+      throw new Error("No se pudo realizar la corrección de ortografía.")
     }
 
     const data = (await res.json()) as OrthographyResponse
@@ -29,7 +29,7 @@ export const orthographyUseCase = async (prompt: string) => {
       userScore: 0,
       errors: [],
       message:
-        'No se pudo realizar la corrección de ortografía. Inténtalo de nuevo.'
+        "No se pudo realizar la corrección de ortografía. Inténtalo de nuevo."
     }
   }
 }

@@ -1,10 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react"
+import ReactDOM from "react-dom/client"
+import ReactGPT from "./react-gpt"
+import "./index.css"
 
-import './index.css'
-import ReactGPT from './react-gpt'
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ReactGPT />
   </React.StrictMode>

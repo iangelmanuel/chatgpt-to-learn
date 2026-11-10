@@ -1,13 +1,13 @@
-import { useState } from 'react'
-
-import { orthographyUseCase } from '../../../core/use-cases'
+import { useState } from "react"
+import { orthographyUseCase } from "../../../core/use-cases"
 import {
   GptOrthopraphyMessage,
   MyMessage,
-  TextMessageBox, // TextMessageBoxFile,
+  TextMessageBox,
+  // TextMessageBoxFile,
   // TextMessageBoxSelect,
   TypingLoader
-} from '../../components'
+} from "../../components"
 
 type Message = {
   text: string
@@ -33,7 +33,7 @@ export const OrthographyPage = () => {
     if (!res.ok) {
       setMessages((prevState) => [
         ...prevState,
-        { text: 'No se pudo realizar la correción', isGpt: true }
+        { text: "No se pudo realizar la correción", isGpt: true }
       ])
     } else {
       setMessages((prevState) => [
@@ -75,7 +75,7 @@ export const OrthographyPage = () => {
             )
           )}
           {isLoading && (
-            <div className="col-start-1 col-end-12 fade-in">
+            <div className="fade-in col-start-1 col-end-12">
               <TypingLoader className="fade-in" />
             </div>
           )}

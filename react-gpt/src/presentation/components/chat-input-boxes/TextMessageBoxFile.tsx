@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState } from "react"
 
 type Props = {
   onSendMessage: (message: string, audioFile: File) => void
@@ -13,7 +13,7 @@ export const TextMessageBoxFile = ({
   disableCorrections,
   accept
 }: Props) => {
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState("")
   const [selectedFile, setSelectedFile] = useState<File | null | undefined>()
   const inputFileRef = useRef<HTMLInputElement>(null)
 
@@ -21,20 +21,20 @@ export const TextMessageBoxFile = ({
     e.preventDefault()
     if (selectedFile === null || selectedFile === undefined) return
     onSendMessage(message, selectedFile)
-    setMessage('')
+    setMessage("")
     setSelectedFile(null)
   }
 
   return (
     <form
       onSubmit={handleSendMessage}
-      className="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4"
+      className="flex h-16 w-full flex-row items-center rounded-xl bg-white px-4"
     >
       <div className="mr-3">
         <button
           type="button"
           onClick={() => inputFileRef.current?.click()}
-          className="flex items-center justify-center text-gray-400 hover:tet-gray-600"
+          className="hover:tet-gray-600 flex items-center justify-center text-gray-400"
         >
           <i className="fa-solid fa-paperclip text-xl" />
         </button>
@@ -54,12 +54,12 @@ export const TextMessageBoxFile = ({
             name="message"
             autoFocus
             placeholder={placeholder}
-            autoComplete={disableCorrections ? 'on' : 'of'}
-            autoCorrect={disableCorrections ? 'on' : 'of'}
-            spellCheck={disableCorrections ? 'false' : 'true'}
+            autoComplete={disableCorrections ? "on" : "of"}
+            autoCorrect={disableCorrections ? "on" : "of"}
+            spellCheck={disableCorrections ? "false" : "true"}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="flex w-full border rounded-xl text-gray-800 focus:outline-none focus:border-indigo-300 pl-4 h-10"
+            className="flex h-10 w-full rounded-xl border pl-4 text-gray-800 focus:border-indigo-300 focus:outline-none"
           />
         </div>
       </div>
@@ -73,7 +73,7 @@ export const TextMessageBoxFile = ({
             <span className="mr-2">Enviar</span>
           ) : (
             <span className="mr-2">
-              {selectedFile.name.substring(0, 10) + '...'}
+              {selectedFile.name.substring(0, 10) + "..."}
             </span>
           )}
           <i className="fa-regular fa-paper-plane" />

@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { GptModule } from './gpt/gpt.module';
-import { ConfigModule } from '@nestjs/config';
+import { Module } from "@nestjs/common"
+import { ConfigModule } from "@nestjs/config"
+import { GptModule } from "./gpt/gpt.module"
 
 @Module({
-  imports: [ConfigModule.forRoot(), GptModule],
+  imports: [ConfigModule.forRoot(), GptModule]
 })
 export class AppModule {}

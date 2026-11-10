@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from "react"
 
 interface Props {
   text: string
@@ -14,17 +14,17 @@ export const GptMessageSelectableImage = ({
   imageUrl,
   onImageSelected
 }: Props) => {
-  const originalImageRef = useRef<HTMLImageElement>()
+  const originalImageRef = useRef<HTMLImageElement | undefined>(undefined)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isDrawing, setIsDrawing] = useState(false)
   const [coords, setCoords] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const canvas = canvasRef.current!
-    const ctx = canvas.getContext('2d')
+    const ctx = canvas.getContext("2d")
 
     const image = new Image()
-    image.crossOrigin = 'Anonymous'
+    image.crossOrigin = "Anonymous"
     image.src = imageUrl
 
     originalImageRef.current = image
@@ -52,10 +52,10 @@ export const GptMessageSelectableImage = ({
   const onMouseUp = () => {
     setIsDrawing(false)
     const canvas = canvasRef.current!
-    const url = canvas.toDataURL('image/png')
+    const url = canvas.toDataURL("image/png")
     // console.log( url );
     // https://jaredwinick.github.io/base64-image-viewer/
-    onImageSelected && onImageSelected(url)
+    onImageSelected?.(url)
   }
 
   const onMouseMove = (
@@ -76,7 +76,7 @@ export const GptMessageSelectableImage = ({
     const canvaHeight = canvasRef.current!.height
 
     // Limpiar el canva
-    const ctx = canvasRef.current!.getContext('2d')!
+    const ctx = canvasRef.current!.getContext("2d")!
 
     ctx.clearRect(0, 0, canvasRef.current!.width, canvasRef.current!.height)
     ctx.drawImage(originalImageRef.current!, 0, 0, canvaWidth, canvaHeight)
@@ -87,7 +87,7 @@ export const GptMessageSelectableImage = ({
   }
 
   const resetCanvas = () => {
-    const ctx = canvasRef.current!.getContext('2d')!
+    const ctx = canvasRef.current!.getContext("2d")!
     ctx.clearRect(0, 0, canvasRef.current!.width, canvasRef.current!.height)
     ctx.drawImage(
       originalImageRef.current!,
@@ -97,16 +97,16 @@ export const GptMessageSelectableImage = ({
       canvasRef.current!.height
     )
 
-    onImageSelected && onImageSelected(imageUrl)
+    onImageSelected?.(imageUrl)
   }
 
   return (
-    <div className="col-start-1 col-end-9 p-3 rounded-lg">
+    <div className="col-start-1 col-end-9 rounded-lg p-3">
       <div className="flex flex-row items-start">
-        <div className="flex items-center justify-center h-10 w-10 rounded-full bg-green-600 flex-shrink-0">
+        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-green-600">
           G
         </div>
-        <div className="relative ml-3 text-sm bg-black bg-opacity-25 pt-3 pb-2 px-4 shadow rounded-xl">
+        <div className="relative ml-3 rounded-xl bg-black bg-opacity-25 px-4 pb-2 pt-3 text-sm shadow">
           <canvas
             ref={canvasRef}
             width={1024}
@@ -128,7 +128,7 @@ export const GptMessageSelectableImage = ({
             src={imageUrl}
             alt={alt}
             className="rounded-xl w-96 h-96 object-cover"
-            onClick={() => onImageSelected && onImageSelected(imageUrl)}
+            onClick={() => onImageSelected?.(imageUrl)}
           /> */}
         </div>
       </div>

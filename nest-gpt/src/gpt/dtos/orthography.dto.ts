@@ -1,10 +1,10 @@
-import { IsInt, IsOptional, IsString } from 'class-validator';
+import { IsInt, IsOptional, IsString } from "class-validator"
 
 export class OrthographyDto {
   @IsString()
-  readonly prompt: string;
+  readonly prompt: string
 
   @IsInt()
   @IsOptional()
-  readonly maxToken?: number;
+  readonly maxToken?: number
 }

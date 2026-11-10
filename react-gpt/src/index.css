@@ -6,11 +6,11 @@ html,
 body {
   background-color: #000000;
   color: white;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 h1 {
-  @apply text-3xl font-bold mb-4;
+  @apply mb-4 text-3xl font-bold;
 }
 
 p {
@@ -18,7 +18,7 @@ p {
 }
 
 ul {
-  @apply list-disc list-inside;
+  @apply list-inside list-disc;
 }
 
 strong {
@@ -30,19 +30,19 @@ em {
 }
 
 .btn-primary {
-  @apply bg-indigo-500 text-white font-bold py-2 px-4 rounded-xl hover:bg-indigo-700 transition-all duration-200 ease-in-out;
+  @apply rounded-xl bg-indigo-500 px-4 py-2 font-bold text-white transition-all duration-200 ease-in-out hover:bg-indigo-700;
 }
 
 .btn-primary:disabled {
-  @apply bg-indigo-500 text-white font-bold py-2 px-4 rounded-xl opacity-50 cursor-not-allowed;
+  @apply cursor-not-allowed rounded-xl bg-indigo-500 px-4 py-2 font-bold text-white opacity-50;
 }
 
 .chat-container {
-  @apply flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-white bg-opacity-5 h-full p-4;
+  @apply flex h-full flex-auto flex-shrink-0 flex-col rounded-2xl bg-white bg-opacity-5 p-4;
 }
 
 .chat-messages {
-  @apply flex flex-col h-full overflow-x-auto mb-4 overflow-scroll;
+  @apply mb-4 flex h-full flex-col overflow-scroll overflow-x-auto;
 }
 
 /* Animations */

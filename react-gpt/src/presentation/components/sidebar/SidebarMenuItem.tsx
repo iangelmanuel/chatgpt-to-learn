@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink } from "react-router-dom"
 
 type Props = {
   option: {
@@ -16,14 +16,14 @@ export const SidebarMenuItem = ({ option }: Props) => {
       to={option.to}
       className={({ isActive }) =>
         isActive
-          ? 'flex justify-center items-center bg-gray-800 rounded-md p-2 transition-colors'
-          : 'flex justify-center items-center hover:bg-gray-800 rounded-md p-2 transition-colors'
+          ? "flex items-center justify-center rounded-md bg-gray-800 p-2 transition-colors"
+          : "flex items-center justify-center rounded-md p-2 transition-colors hover:bg-gray-800"
       }
     >
-      <i className={`fas ${option.icon} text-2xl mr-4 text-indigo-400`} />
-      <div className="flex flex-col flex-grow">
-        <span className="text-white text-lg font-semibold">{option.title}</span>
-        <span className="text-gray-400 text-sm">{option.description}</span>
+      <i className={`fas ${option.icon} mr-4 text-2xl text-indigo-400`} />
+      <div className="flex flex-grow flex-col">
+        <span className="text-lg font-semibold text-white">{option.title}</span>
+        <span className="text-sm text-gray-400">{option.description}</span>
       </div>
     </NavLink>
   )

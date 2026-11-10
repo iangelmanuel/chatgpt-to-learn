@@ -1,12 +1,11 @@
-import { useState } from 'react'
-
-import { imageGenerationUseCase } from '../../../core/use-cases'
+import { useState } from "react"
+import { imageGenerationUseCase } from "../../../core/use-cases"
 import {
   GptMessageImage,
   MyMessage,
   TextMessageBox,
   TypingLoader
-} from '../../components'
+} from "../../components"
 
 type Message = {
   text: string
@@ -32,14 +31,14 @@ export const ImageGenerationPage = () => {
     if (!imageInfo) {
       return setMessages((prevState) => [
         ...prevState,
-        { text: 'Error al generar la imagen', isGpt: true }
+        { text: "Error al generar la imagen", isGpt: true }
       ])
     }
 
     setMessages((prevState) => [
       ...prevState,
       {
-        text: 'Aquí tienes la imagen:',
+        text: "Aquí tienes la imagen:",
         isGpt: true,
         info: {
           imageUrl: imageInfo.url,
@@ -58,8 +57,8 @@ export const ImageGenerationPage = () => {
               <GptMessageImage
                 key={index}
                 text={message.text}
-                imageUrl={message.info?.imageUrl!}
-                alt={message.info?.alt!}
+                imageUrl={message.info?.imageUrl as string}
+                alt={message.info?.alt as string}
               />
             ) : (
               <MyMessage
@@ -69,7 +68,7 @@ export const ImageGenerationPage = () => {
             )
           )}
           {isLoading && (
-            <div className="col-start-1 col-end-12 fade-in">
+            <div className="fade-in col-start-1 col-end-12">
               <TypingLoader className="fade-in" />
             </div>
           )}

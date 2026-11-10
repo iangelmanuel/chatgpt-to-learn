@@ -1,14 +1,14 @@
-import { IsOptional, IsString } from 'class-validator';
+import { IsOptional, IsString } from "class-validator"
 
 export class ImageGenerationDto {
   @IsString()
-  readonly prompt: string;
+  readonly prompt: string
 
   @IsString()
   @IsOptional()
-  readonly originalImage?: string;
+  readonly originalImage?: string
 
   @IsString()
   @IsOptional()
-  readonly maskImage?: string;
+  readonly maskImage?: string
 }

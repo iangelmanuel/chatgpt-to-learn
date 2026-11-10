@@ -1,12 +1,11 @@
-import { useState } from 'react'
-
-import { translateUseCase } from '../../../core/use-cases'
+import { useState } from "react"
+import { translateUseCase } from "../../../core/use-cases"
 import {
   GptMessage,
   MyMessage,
   TextMessageBoxSelect,
   TypingLoader
-} from '../../components'
+} from "../../components"
 
 type Message = {
   text: string
@@ -14,17 +13,17 @@ type Message = {
 }
 
 const languages = [
-  { id: 'alemán', text: 'Alemán' },
-  { id: 'árabe', text: 'Árabe' },
-  { id: 'bengalí', text: 'Bengalí' },
-  { id: 'francés', text: 'Francés' },
-  { id: 'italiano', text: 'Italiano' },
-  { id: 'hindi', text: 'Hindi' },
-  { id: 'inglés', text: 'Inglés' },
-  { id: 'japonés', text: 'Japonés' },
-  { id: 'mandarín', text: 'Mandarín' },
-  { id: 'portugués', text: 'Portugués' },
-  { id: 'ruso', text: 'Ruso' }
+  { id: "alemán", text: "Alemán" },
+  { id: "árabe", text: "Árabe" },
+  { id: "bengalí", text: "Bengalí" },
+  { id: "francés", text: "Francés" },
+  { id: "italiano", text: "Italiano" },
+  { id: "hindi", text: "Hindi" },
+  { id: "inglés", text: "Inglés" },
+  { id: "japonés", text: "Japonés" },
+  { id: "mandarín", text: "Mandarín" },
+  { id: "portugués", text: "Portugués" },
+  { id: "ruso", text: "Ruso" }
 ]
 
 export const TranslatePage = () => {
@@ -74,7 +73,7 @@ export const TranslatePage = () => {
             )
           )}
           {isLoading && (
-            <div className="col-start-1 col-end-12 fade-in">
+            <div className="fade-in col-start-1 col-end-12">
               <TypingLoader className="fade-in" />
             </div>
           )}

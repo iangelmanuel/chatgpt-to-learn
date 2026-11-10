@@ -1,12 +1,11 @@
-import { useState } from 'react'
-
-import { audioToTextUseCase } from '../../../core/use-cases'
+import { useState } from "react"
+import { audioToTextUseCase } from "../../../core/use-cases"
 import {
   GptMessage,
   MyMessage,
   TextMessageBoxFile,
   TypingLoader
-} from '../../components'
+} from "../../components"
 
 type Message = {
   text: string
@@ -66,12 +65,12 @@ export const AudioToTextPage = () => {
             ) : (
               <MyMessage
                 key={index}
-                text={message.text ? message.text : 'Transcribe el audio...'}
+                text={message.text ? message.text : "Transcribe el audio..."}
               />
             )
           )}
           {isLoading && (
-            <div className="col-start-1 col-end-12 fade-in">
+            <div className="fade-in col-start-1 col-end-12">
               <TypingLoader className="fade-in" />
             </div>
           )}

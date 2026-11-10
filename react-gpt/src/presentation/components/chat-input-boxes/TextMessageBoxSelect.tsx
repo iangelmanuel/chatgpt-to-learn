@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react"
 
 type Option = {
   id: string
@@ -18,21 +18,21 @@ export const TextMessageBoxSelect = ({
   disableCorrections,
   options
 }: Props) => {
-  const [message, setMessage] = useState('')
-  const [selectedOption, setSelectedOption] = useState('')
+  const [message, setMessage] = useState("")
+  const [selectedOption, setSelectedOption] = useState("")
 
   const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (message.trim().length === 0) return
-    if (selectedOption === '') return
+    if (selectedOption === "") return
     onSendMessage(message, selectedOption)
-    setMessage('')
+    setMessage("")
   }
 
   return (
     <form
       onSubmit={handleSendMessage}
-      className="flex flex-row items-center h-16 rounded-xl bg-gray-800 w-full px-4"
+      className="flex h-16 w-full flex-row items-center rounded-xl bg-gray-800 px-4"
     >
       <div className="flex-grow">
         <div className="flex">
@@ -41,18 +41,18 @@ export const TextMessageBoxSelect = ({
             name="message"
             autoFocus
             placeholder={placeholder}
-            autoComplete={disableCorrections ? 'on' : 'of'}
-            autoCorrect={disableCorrections ? 'on' : 'of'}
-            spellCheck={disableCorrections ? 'false' : 'true'}
+            autoComplete={disableCorrections ? "on" : "of"}
+            autoCorrect={disableCorrections ? "on" : "of"}
+            spellCheck={disableCorrections ? "false" : "true"}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full border rounded-xl text-gray-800 focus:outline-none focus:border-indigo-300 pl-4 h-10"
+            className="h-10 w-full rounded-xl border pl-4 text-gray-800 focus:border-indigo-300 focus:outline-none"
           />
           <select
             name="select"
             value={selectedOption}
             onChange={(e) => setSelectedOption(e.target.value)}
-            className="w-2/6 ml-5 border rounded-xl text-gray-800 focus:outline-none focus:border-indigo-300 pl-4 h-10"
+            className="ml-5 h-10 w-2/6 rounded-xl border pl-4 text-gray-800 focus:border-indigo-300 focus:outline-none"
           >
             <option
               value=""

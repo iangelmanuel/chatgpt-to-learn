@@ -1,13 +1,13 @@
-import type { TranslateResponse } from '../../types'
+import type { TranslateResponse } from "../../types"
 
 export const translateUseCase = async (prompt: string, lang: string) => {
   try {
     const url = `${import.meta.env.VITE_GPT_API}/translate`
 
     const res = await fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({ prompt, lang })
     })
@@ -15,7 +15,7 @@ export const translateUseCase = async (prompt: string, lang: string) => {
     if (!res) {
       return {
         ok: false,
-        message: 'No se pudo traducir'
+        message: "No se pudo traducir"
       }
     }
 
@@ -25,10 +25,10 @@ export const translateUseCase = async (prompt: string, lang: string) => {
       ok: true,
       message
     }
-  } catch (error) {
+  } catch {
     return {
       ok: false,
-      message: 'No se pudo traducir'
+      message: "No se pudo traducir"
     }
   }
 }

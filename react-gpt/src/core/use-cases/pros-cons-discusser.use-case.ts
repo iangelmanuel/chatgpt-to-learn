@@ -1,20 +1,20 @@
-import type { ProsConsDiscusserResponse } from '../../types'
+import type { ProsConsDiscusserResponse } from "../../types"
 
 export const prosConsDiscusserUseCase = async (prompt: string) => {
   try {
     const url = `${import.meta.env.VITE_GPT_API}/pros-cons-discusser`
 
     const res = await fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({ prompt })
     })
 
     if (!res.ok) {
       throw new Error(
-        'No se pudo realizar la comparación. Inténtalo mas tarde.'
+        "No se pudo realizar la comparación. Inténtalo mas tarde."
       )
     }
 
@@ -28,7 +28,7 @@ export const prosConsDiscusserUseCase = async (prompt: string) => {
     console.error(error)
     return {
       ok: false,
-      content: 'No se pudo realizar la comparación. Inténtalo mas tarde.'
+      content: "No se pudo realizar la comparación. Inténtalo mas tarde."
     }
   }
 }
